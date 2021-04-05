@@ -1,7 +1,7 @@
-#URL to repo:
+# URL to repo:
 https://github.com/Dennis-Shih/Requirements
 
-#Team members:
+# Team members:
 * https://github.com/Dennis-Shih
 * https://github.com/jamesta99
 
