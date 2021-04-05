@@ -2,7 +2,7 @@
 https://github.com/Dennis-Shih/Requirements
 
 #Team members:
-https://github.com/Dennis-Shih
+*https://github.com/Dennis-Shih
 
 
 #Product name
