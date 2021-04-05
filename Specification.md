@@ -13,6 +13,7 @@ https://github.com/Dennis-Shih/Requirements
 # Use cases
 
 **Use Case Name:**
+
 **Date:**
 ## Summary
 ## Actors
