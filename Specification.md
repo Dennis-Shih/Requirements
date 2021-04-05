@@ -6,52 +6,20 @@ https://github.com/Dennis-Shih/Requirements
 * https://github.com/jamesta99
 
 
-# Use Case Description
-
 **Product Name:**
 
 **Problem Statement:**
 
-
+# Use cases
 
 **Use Case Name:**
-
 **Date:**
-
- 
-
 ## Summary
-
- 
-
 ## Actors
-
-
- 
-
 ## Preconditions
-
-
-
- 
-
 ## Triggers
-
-
-
- 
-
 ## Primary Sequence
-
-
- 
-
 ## Primary Postconditions
-
-
-
- 
-
 ## Alternate Sequences
 
 Only if you have alt seq
