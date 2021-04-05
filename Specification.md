@@ -6,7 +6,7 @@ https://github.com/Dennis-Shih/Requirements
 * https://github.com/jamesta99
 
 
-**Product Name:**
+**Product Name:** TaskLab
 
 **Problem Statement:**
 
