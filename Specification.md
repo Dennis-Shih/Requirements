@@ -5,8 +5,6 @@ https://github.com/Dennis-Shih/Requirements
 * https://github.com/Dennis-Shih
 * https://github.com/jamesta99
 
-#Product name
-
 
 # Use Case Description
 
