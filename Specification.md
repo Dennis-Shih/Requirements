@@ -48,11 +48,13 @@ No new task with the invalid name is created.
 
 
 
-**Use Case Name:**
+**Use Case Name:** Login or Sign in
 
-**Date:**
+**Date:** 4/6/2021
 ## Summary
+The actor attempts to sign in to an account on the task manager.
 ## Actors
+A person or bot
 ## Preconditions
 ## Triggers
 ## Primary Sequence
