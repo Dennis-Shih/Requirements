@@ -55,10 +55,61 @@ No new task with the invalid name is created.
 The actor attempts to sign in to an account on the task manager.
 ## Actors
 A person or bot
-## Preconditions
+## Preconditions 
+* The actor is not already signed in.
 ## Triggers
+* Actor selects a 'Sign in' button
 ## Primary Sequence
+1. System prompts the user with a username and password.
+2. System logs in the user assuming a valid username and password.
 ## Primary Postconditions
+User must be logged in to their account.
+
+## Alternate Sequences
+1. The password or username is invalid
+a. System refuses to sign in
+b. System prompts user to log in again
+
+ 
+
+### Alternate Trigger
+The user enters an invalid username or password
+
+### Alternate Postconditions
+System does not log user into account.
+
+
+
+**Use Case Name:** Register for new account
+
+**Date:** 4/6/2021
+## Summary
+The actor attempts to create an account.
+## Actors
+A person or bot
+## Preconditions 
+* The actor is logged out.
+## Triggers
+* Actor selects a 'Sign in' button
+## Primary Sequence
+1. System prompts the user with a username and password.
+2. System creates account with entered username and password.
+## Primary Postconditions
+System must have created a new account. 
+
+## Alternate Sequences
+1. The username entered by the user belongs to an existing account.
+  a. System notifies user that account name already in use.
+  b. System prompts user to change username.
+
+ 
+
+### Alternate Trigger
+The user attempts to create an account with an existing username.
+
+### Alternate Postconditions
+System does not create an account.
+
 
 ## Non-functional Requirements
 
