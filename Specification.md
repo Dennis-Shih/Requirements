@@ -237,7 +237,8 @@ The actor wants to allow other users to work on a task.
 ## Triggers
 * Actor selects a button to invite users to the task
 ## Primary Sequence
-1. System gives the invited users access to the task.
+1. System prompts user to tell it which users to invite, and does not show any users that are already collaborators.
+2. System invites selected users.
 
 
 
