@@ -8,7 +8,7 @@ https://github.com/Dennis-Shih/Requirements
 
 **Product Name:** TaskLab
 
-**Problem Statement:**
+**Problem Statement:** The purpose of this product is to allow users to complete tasks of various sizes in an efficient and organized manner. 
 
 # Use cases
 
