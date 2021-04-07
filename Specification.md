@@ -240,8 +240,7 @@ The actor wants to allow other users to work on a task.
 * Actor selects a button to invite users to the task
 ## Primary Sequence
 1. System prompts user to tell it which users to invite, and does not show any users that are already collaborators.
-2. User adds any other users they want to have access to the task.
-3. System invites selected users and grants them the ability to work on the task.
+2. System invites selected users.
 
 
 
@@ -249,30 +248,11 @@ The actor wants to allow other users to work on a task.
 Invited users should be able to work on the task.
 
 
-**Use Case Name:** Set deadline
-
-**Date:** 4/7/2021
-## Summary
-The actor wants to attribute a certain date to a task, so that they know when they should be finished with said task, or want to modify the deadline. The deadline merely serves as a reminder, and can be changed by the user(s).
-## Actors
-* The person or bot
-## Preconditions 
-* The file must exist
-## Triggers
-* Actor selects 'Set deadline' option
-## Primary Sequence
-1. System prompts user to enter a date/time. Generally, the system will default to the computer's set time, but if a deadline is already set, the system should default to that deadline's date.
-2. User confirms choice by hitting a confirm button.
-
-
-
-## Primary Postconditions
-A date and/or time values should be highlighted as a deadline and attributed to the task.
-
 
 ## Non-functional Requirements
-
- 
+The product must load pages in under 4 seconds.
+Users must be able to understand how to use the interface within 15 seconds of seeing it
+The product must format dates in the form month/day/year
 
 ## Glossary
 User: The person who wants to perform a task under the task manager
