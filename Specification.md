@@ -26,7 +26,8 @@ The actor must be logged in to an account.
 The actor clicks a button such as "New Task".
 ## Primary Sequence
 1. System prompts user for a name for the task.
-2. System starts new task if a valid name is entered or if name is left blank.
+2. User enters a name in a text field or does not name it.
+3. System starts new task if a valid name is entered or if name is left blank.
 ## Primary Postconditions
 A new task should have been created under the title entered by the user, or 'Untitled' if left blank.
 ## Alternate Sequences
@@ -76,12 +77,13 @@ A person or bot
 * Actor selects a 'Sign in' button
 ## Primary Sequence
 1. System prompts the user with a username and password.
-2. System logs in the user assuming a valid username and password.
+2. User types in a username and password.
+3. System logs in the user assuming a valid username and password.
 ## Primary Postconditions
 User must be logged in to their account.
 
 ## Alternate Sequences
-1. The password or username is invalid
+2. The password or username is invalid
 a. System refuses to sign in
 b. System prompts user to log in again
 
