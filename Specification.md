@@ -111,8 +111,61 @@ The user attempts to create an account with an existing username.
 System does not create an account.
 
 
+**Use Case Name:** Save
+
+**Date:** 4/6/2021
+## Summary
+The actor wants to save their progress on a task
+## Actors
+A person or bot
+## Preconditions 
+* The task must have unsaved progress or changes
+## Triggers
+* Actor selects a 'Save' button or icon
+## Primary Sequence
+1. System saves the changes when user presses the respective button.
+## Primary Postconditions
+System must have saved any unsaved progress made on a task.
+
+
+
+
+**Use Case Name:** Save as
+
+**Date:** 4/7/2021
+## Summary
+The actor wants to save a task under a new name.
+## Actors
+A person or bot
+## Preconditions 
+* The task must have unsaved progress or changes
+## Triggers
+* Actor selects a 'Save as' button or icon
+## Primary Sequence
+1. System shows user a text field in which they can edit what name to save the task under.
+2. System saves the task under the name specified.
+## Primary Postconditions
+System must have saved any unsaved progress made on a task, under the new task name.
+
+## Alternate Sequences
+2. The name entered is already being used by another task.
+   a. The system asks if the user wants to overwrite the existing file.
+   b. File is overwritten if the user confirms, otherwise does nothing.
+ 
+
+
+### Alternate Trigger
+The name the user attempts to save under is already being used.
+
+### Alternate Postconditions
+System overrides existing file if the actor demands it, or does not if the actor does not wish to override.
+
+
 ## Non-functional Requirements
 
  
 
 ## Glossary
+User: The person who wants to perform a task under the task manager
+Account: User accesses their work by signing in.
+
