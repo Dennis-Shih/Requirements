@@ -43,7 +43,7 @@ The user enters a task name with illegal characters
 ### Alternate Postconditions
 No new task with the invalid name is created.
 
-**Use Case Name:** Delete/Cancel task
+**Use Case Name:**Delete/Cancel task
 
 **Date:** 4/7/2021
 
@@ -161,6 +161,8 @@ A person or bot
 System must have saved any unsaved progress made on a task.
 
 
+
+
 **Use Case Name:** Save as
 
 **Date:** 4/7/2021
@@ -173,16 +175,15 @@ A person or bot
 ## Triggers
 * Actor selects a 'Save as' button or icon
 ## Primary Sequence
-1. System shows user a text field in which they can edit what name to save the task under.
-2. System saves the task under the name specified.
+1. System shows user a text field in which they can edit what name to save the task under, defaulting to the current name.
+2. User enters name they wish to use and presses 'Save'.
+3. System renames the task and saves the changes (Use case 'Save').
 ## Primary Postconditions
 System must have saved any unsaved progress made on a task, under the new task name.
 
 ## Alternate Sequences
 2. The name entered is already being used by another task.
-
    a. The system asks if the user wants to overwrite the existing file.
-   
    b. File is overwritten if the user confirms, otherwise does nothing.
  
 
@@ -219,10 +220,11 @@ A file whose contents are identical to the original must have been created in th
 
 ## Alternate Sequences
 2. The name entered is already being used by another task.
-
    a. The system asks if the user wants to overwrite the existing file.
-   
    b. File is overwritten if the user confirms, otherwise does nothing.
+
+
+
 
 
 **Use Case Name:** Invite collaborators
@@ -239,7 +241,8 @@ The actor wants to allow other users to work on a task.
 * Actor selects a button to invite users to the task
 ## Primary Sequence
 1. System prompts user to tell it which users to invite, and does not show any users that are already collaborators.
-2. System invites selected users.
+2. User adds any other users they want to have access to the task.
+3. System invites selected users and grants them the ability to work on the task.
 
 
 
@@ -247,11 +250,30 @@ The actor wants to allow other users to work on a task.
 Invited users should be able to work on the task.
 
 
+**Use Case Name:** Set deadline
+
+**Date:** 4/7/2021
+## Summary
+The actor wants to attribute a certain date to a task, so that they know when they should be finished with said task, or want to modify the deadline. The deadline merely serves as a reminder, and can be changed by the user(s).
+## Actors
+* The person or bot
+## Preconditions 
+* The file must exist
+## Triggers
+* Actor selects 'Set deadline' option
+## Primary Sequence
+1. System prompts user to enter a date/time. Generally, the system will default to the computer's set time, but if a deadline is already set, the system should default to that deadline's date.
+2. User confirms choice by hitting a confirm button.
+
+
+
+## Primary Postconditions
+A date and/or time values should be highlighted as a deadline and attributed to the task.
+
 
 ## Non-functional Requirements
-* The product must load pages in under 4 seconds.
-* Users must be able to understand how to use the interface within 15 seconds of seeing it
-* The product must format dates in the form month/day/year
+
+ 
 
 ## Glossary
 User: The person who wants to perform a task under the task manager
