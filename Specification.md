@@ -42,10 +42,25 @@ The user enters a task name with illegal characters
 ### Alternate Postconditions
 No new task with the invalid name is created.
 
+**Use Case Name:**Delete/Cancel task
 
+**Date:** 4/7/2021
 
+## Summary
+The user wants to cancel or delete a task
+## Actors
+A person
+## Preconditions
+* The actor must be logged in to an account
+* The actor must have an active task
+## Triggers
+The actor selects a button named 'Cancel Task'
+## Primary Sequence
+1. System opens a dialogue box to confirm the actor's action
+2. System removes the task and its data
 
-
+## Primary Postconditions
+* The data of the selected task must be deleted
 
 
 **Use Case Name:** Login or Sign in
