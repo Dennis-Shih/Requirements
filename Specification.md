@@ -192,6 +192,60 @@ The name the user attempts to save under is already being used.
 System overrides existing file if the actor demands it, or does not if the actor does not wish to override.
 
 
+
+
+**Use Case Name:** Make a copy
+
+**Date:** 4/7/2021
+## Summary
+The actor wants to create a duplicate of a task
+## Actors
+A person or bot
+## Preconditions 
+* The task must have unsaved progress or changes
+* User must be logged in
+* User must have the task open
+## Triggers
+* Actor selects a 'Make a copy' button
+## Primary Sequence
+1. System creates a copy of the selected task under a name that indicates that it is a copy.
+
+
+
+## Primary Postconditions
+A file whose contents are identical to the original must have been created in the same location.
+
+## Alternate Sequences
+2. The name entered is already being used by another task.
+   a. The system asks if the user wants to overwrite the existing file.
+   b. File is overwritten if the user confirms, otherwise does nothing.
+
+
+
+
+
+**Use Case Name:** Invite collaborators
+
+**Date:** 4/7/2021
+## Summary
+The actor wants to allow other users to work on a task.
+## Actors
+* The person or bot doing the inviting
+* The users being invited
+## Preconditions 
+* The collaborators must not already be able to work on the file
+## Triggers
+* Actor selects a button to invite users to the task
+## Primary Sequence
+1. System gives the invited users access to the task.
+
+
+
+## Primary Postconditions
+Invited users should be able to work on the task.
+
+
+
 ## Non-functional Requirements
 
  
