@@ -43,7 +43,7 @@ The user enters a task name with illegal characters
 ### Alternate Postconditions
 No new task with the invalid name is created.
 
-**Use Case Name:**Delete/Cancel task
+**Use Case Name:** Delete/Cancel task
 
 **Date:** 4/7/2021
 
@@ -161,8 +161,6 @@ A person or bot
 System must have saved any unsaved progress made on a task.
 
 
-
-
 **Use Case Name:** Save as
 
 **Date:** 4/7/2021
@@ -182,7 +180,9 @@ System must have saved any unsaved progress made on a task, under the new task n
 
 ## Alternate Sequences
 2. The name entered is already being used by another task.
+
    a. The system asks if the user wants to overwrite the existing file.
+   
    b. File is overwritten if the user confirms, otherwise does nothing.
  
 
@@ -219,11 +219,10 @@ A file whose contents are identical to the original must have been created in th
 
 ## Alternate Sequences
 2. The name entered is already being used by another task.
+
    a. The system asks if the user wants to overwrite the existing file.
+   
    b. File is overwritten if the user confirms, otherwise does nothing.
-
-
-
 
 
 **Use Case Name:** Invite collaborators
@@ -250,9 +249,9 @@ Invited users should be able to work on the task.
 
 
 ## Non-functional Requirements
-The product must load pages in under 4 seconds.
-Users must be able to understand how to use the interface within 15 seconds of seeing it
-The product must format dates in the form month/day/year
+* The product must load pages in under 4 seconds.
+* Users must be able to understand how to use the interface within 15 seconds of seeing it
+* The product must format dates in the form month/day/year
 
 ## Glossary
 User: The person who wants to perform a task under the task manager
