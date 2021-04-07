@@ -2,8 +2,8 @@
 https://github.com/Dennis-Shih/Requirements
 
 # Team members:
-* https://github.com/Dennis-Shih
-* https://github.com/jamesta99
+* Dennis Shih: https://github.com/Dennis-Shih
+* James Ta: https://github.com/jamesta99
 
 
 **Product Name:** TaskLab
@@ -110,6 +110,22 @@ The user attempts to create an account with an existing username.
 ### Alternate Postconditions
 System does not create an account.
 
+**Use Case Name:** Log out
+
+**Date:** 4/7/2021
+## Summary
+Actor wants to sign out of their account
+## Actors
+A person or bot
+## Preconditions
+* The actor must be signed in
+## Triggers
+* Actor selects a 'Sign out' button
+## Primary Sequence
+1. System opens a dialogue box to confirm the user's action.
+2. System logs out of user's account.
+## Primary Postconditions
+The user must not be logged in.
 
 **Use Case Name:** Save
 
