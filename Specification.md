@@ -303,6 +303,7 @@ The actor selects a button that allows them to set the task's priority
 ## Primary Sequence
 1. System opens a list of different priorities from 1-5
 2. Actor selects a priority from the list
+3. System prompts user to add an (optional) deadline ('Set deadline' use case)
 ## Primary Postconditions
 * The task is marked with the selected priority
 
@@ -326,6 +327,32 @@ The actor wants to attribute a certain date to a task, so that they know when th
 
 ## Primary Postconditions
 A date and/or time values should be highlighted as a deadline and attributed to the task.
+
+
+**Use Case Name:** Revert to previous version
+
+**Date:** 4/7/2021
+## Summary
+The actor wants to return the task to an earlier version, assuming the system keeps track of each time the task is saved.
+## Actors
+* The person or bot
+## Preconditions 
+* User must be logged in
+* User must have the task open
+## Triggers
+* Actor selects 'Restore older version' button 
+## Primary Sequence
+1. System shows user the task's history, which includes versions from each time the task was saved.
+2. User selects a version to view.
+3. System shows that version of the task, and gives an option to restore that version.
+4. User selects option to restore the old version of the task.
+5. System saves the file using the contents of the version selected ('Save' use case).
+
+
+
+## Primary Postconditions
+The file is saved under the version selected by the user
+
 
 
 
