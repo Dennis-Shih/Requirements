@@ -257,11 +257,13 @@ The actor wants to write a comment on a task
 The person writing the comment
 ## Preconditions
 * The actor must be logged in
+* Actor should have task open
 ## Triggers
 The actor selects a 'Comment' button
 ## Primary Sequence
 1. System opens a text field for the actor to write their comment in
-2. After the actor selects a 'Post' button, the system shows the actor's comment beneath the task
+2. Actor types in text field
+3. After the actor selects a 'Post' button, the system shows the actor's comment beneath the task
 
 ## Primary Postconditions
 * The written comment should be visible to users viewing the task
