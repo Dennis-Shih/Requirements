@@ -174,7 +174,8 @@ A person or bot
 * Actor selects a 'Save as' button or icon
 ## Primary Sequence
 1. System shows user a text field in which they can edit what name to save the task under.
-2. System saves the task under the name specified.
+2. User types their desired name in text field and confirms their choice to the system.
+3. System renames the task accordingly and saves unsaved progress ('Save' use case)
 ## Primary Postconditions
 System must have saved any unsaved progress made on a task, under the new task name.
 
