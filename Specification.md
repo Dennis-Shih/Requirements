@@ -32,7 +32,9 @@ The actor clicks a button such as "New Task".
 A new task should have been created under the title entered by the user, or 'Untitled' if left blank.
 ## Alternate Sequences
 2. The title of the task is invalid (such as any potential illegal characters)
+
 a. System refuses to create new task  
+
 b. System prompts user for a valid name for task
 
  
@@ -84,7 +86,9 @@ User must be logged in to their account.
 
 ## Alternate Sequences
 2. The password or username is invalid
+
 a. System refuses to sign in
+
 b. System prompts user to log in again
 
  
@@ -116,7 +120,9 @@ System must have created a new account.
 
 ## Alternate Sequences
 1. The username entered by the user belongs to an existing account.
+
   a. System notifies user that account name already in use.
+  
   b. System prompts user to change username.
 
  
@@ -348,12 +354,27 @@ The actor wants to return the task to an earlier version, assuming the system ke
 4. User selects option to restore the old version of the task.
 5. System saves the file using the contents of the version selected ('Save' use case).
 
-
-
 ## Primary Postconditions
 The file is saved under the version selected by the user
 
 
+**Use Case Name:** Organize tasks
+
+**Date:** 4/7/2021
+## Summary
+The actor wants to organize their tasks by either priority or deadline
+## Actors
+A person
+## Preconditions
+* The actor must be logged in
+* The actor must have an active task 
+## Triggers
+The actor selects a button that allows the actor to sort their tasks
+## Primary Sequence
+1. System shows a list of the parameters it can sort by(currently priority or deadline)
+2. Actor selects a parameter
+## Primary Postconditions
+* The actor's tasks are shown in order of decending priority or deadline
 
 
 ## Non-functional Requirements
