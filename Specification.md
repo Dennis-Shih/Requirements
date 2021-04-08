@@ -5,6 +5,10 @@ https://github.com/Dennis-Shih/Requirements
 * Dennis Shih: https://github.com/Dennis-Shih
 * James Ta: https://github.com/jamesta99
 
+![uml](https://user-images.githubusercontent.com/66137966/113957841-df4a9500-97d4-11eb-833c-7472a8b32413.jpg)
+
+
+
 
 **Product Name:** TaskLab
 
