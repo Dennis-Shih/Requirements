@@ -242,10 +242,29 @@ The actor wants to allow other users to work on a task.
 2. User adds any other users they want to have access to the task.
 3. System invites selected users and grants them the ability to work on the task.
 
-
-
 ## Primary Postconditions
 Invited users should be able to work on the task.
+
+**Use Case Name:** Remove collaborators
+
+**Date:** 4/7/2021
+## Summary
+The actor wants to remove a user from a task
+## Actors
+The person removing the user
+## Preconditions
+* The actor must be logged in
+* The actor must have an active task with other collaborators
+## Triggers
+Actor selects a button to remove users from a task 
+## Primary Sequence
+1. System displays a list of currently collaborating users
+2. Actor selects the users they would like to remove
+3. System removes the users from the task, making them unable to work on it
+
+## Primary Postconditions
+* The selected users cannot work on the task they were removed from
+
 
 **Use Case Name:** Comment
 
@@ -298,4 +317,5 @@ A date and/or time values should be highlighted as a deadline and attributed to 
 
 ## Glossary
 User: The person who wants to perform a task under the task manager
+
 Account: User accesses their work by signing in.
