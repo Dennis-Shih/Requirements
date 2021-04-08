@@ -288,6 +288,24 @@ The actor selects a 'Comment' button
 ## Primary Postconditions
 * The written comment should be visible to users viewing the task
 
+**Use Case Name:** Set priority
+
+**Date:** 4/7/2021
+## Summary
+Actor wants to set priority for different tasks as a reminder of the task's relative importance. The priorites can be set from 1-5, 1 being the highest and 5 being the lowest.
+## Actors
+A person
+## Preconditions
+* The actor must be logged in
+* The actor must have a task open
+## Triggers
+The actor selects a button that allows them to set the task's priority
+## Primary Sequence
+1. System opens a list of different priorities from 1-5
+2. Actor selects a priority from the list
+## Primary Postconditions
+* The task is marked with the selected priority
+
 
 **Use Case Name:** Set deadline
 
