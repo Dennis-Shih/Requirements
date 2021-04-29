@@ -16,25 +16,25 @@ https://github.com/Dennis-Shih/Requirements
 
 # Use cases
 
-**Use Case Name:** Start/Create new task
+## Use Case Name: Start/Create new task ##
 
 **Date:** 4/6/2021
 
-## Summary 
+### Summary 
 A new task must be created or started by the actor. 
-## Actors
+### Actors
 The user of the product, likely a person, who aims to create a new task.
-## Preconditions
+### Preconditions
 The actor must be logged in to an account.
-## Triggers
+### Triggers
 The actor clicks a button such as "New Task".
-## Primary Sequence
+### Primary Sequence
 1. System prompts user for a name for the task.
 2. User enters a name in a text field or does not name it.
 3. System starts new task if a valid name is entered or if name is left blank.
-## Primary Postconditions
+### Primary Postconditions
 A new task should have been created under the title entered by the user, or 'Untitled' if left blank.
-## Alternate Sequences
+#### Alternate Sequences
 2. The title of the task is invalid (such as any potential illegal characters)
 
 a. System refuses to create new task  
@@ -43,52 +43,52 @@ b. System prompts user for a valid name for task
 
  
 
-### Alternate Trigger
+#### Alternate Trigger
 The user enters a task name with illegal characters
 
-### Alternate Postconditions
+#### Alternate Postconditions
 No new task with the invalid name is created.
 
-**Use Case Name:** Delete/Cancel task
+## Use Case Name: Delete/Cancel task ##
 
 **Date:** 4/7/2021
 
-## Summary
+### Summary
 The user wants to cancel or delete a task
-## Actors
+### Actors
 A person
-## Preconditions
+### Preconditions
 * The actor must be logged in to an account
 * The actor must have an active task
-## Triggers
+### Triggers
 The actor selects a button named 'Cancel Task'
-## Primary Sequence
+### Primary Sequence
 1. System opens a dialogue box to confirm the actor's action
 2. System removes the task and its data
 
-## Primary Postconditions
+### Primary Postconditions
 * The data of the selected task must be deleted
 
 
-**Use Case Name:** Login or Sign in
+## Use Case Name: Login or Sign in ##
 
 **Date:** 4/6/2021
-## Summary
+### Summary
 The actor attempts to sign in to an account on the task manager.
-## Actors
+### Actors
 A person or bot
-## Preconditions 
+### Preconditions 
 * The actor is not already signed in.
-## Triggers
+### Triggers
 * Actor selects a 'Sign in' button
-## Primary Sequence
+### Primary Sequence
 1. System prompts the user with a username and password.
 2. User types in a username and password.
 3. System logs in the user assuming a valid username and password.
-## Primary Postconditions
+### Primary Postconditions
 User must be logged in to their account.
 
-## Alternate Sequences
+### Alternate Sequences
 2. The password or username is invalid
 
 a. System refuses to sign in
@@ -97,32 +97,32 @@ b. System prompts user to log in again
 
  
 
-### Alternate Trigger
+#### Alternate Trigger
 The user enters an invalid username or password
 
-### Alternate Postconditions
+#### Alternate Postconditions
 System does not log user into account.
 
 
 
-**Use Case Name:** Register for new account
+## Use Case Name: Register for new account ##
 
 **Date:** 4/6/2021
-## Summary
+### Summary
 The actor attempts to create an account.
-## Actors
+### Actors
 A person or bot
-## Preconditions 
+### Preconditions 
 * The actor is logged out.
-## Triggers
+### Triggers
 * Actor selects a 'Sign in' button
-## Primary Sequence
+### Primary Sequence
 1. System prompts the user with a username and password.
 2. System creates account with entered username and password.
-## Primary Postconditions
+### Primary Postconditions
 System must have created a new account. 
 
-## Alternate Sequences
+### Alternate Sequences
 1. The username entered by the user belongs to an existing account.
 
   a. System notifies user that account name already in use.
@@ -131,65 +131,65 @@ System must have created a new account.
 
  
 
-### Alternate Trigger
+#### Alternate Trigger
 The user attempts to create an account with an existing username.
 
-### Alternate Postconditions
+#### Alternate Postconditions
 System does not create an account.
 
-**Use Case Name:** Log out
+## Use Case Name: Log out ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 Actor wants to sign out of their account
-## Actors
+### Actors
 A person or bot
-## Preconditions
+### Preconditions
 * The actor must be signed in
-## Triggers
+### Triggers
 * Actor selects a 'Sign out' button
-## Primary Sequence
+### Primary Sequence
 1. System opens a dialogue box to confirm the user's action.
 2. System logs out of user's account.
-## Primary Postconditions
+### Primary Postconditions
 The user must not be logged in.
 
-**Use Case Name:** Save
+## Use Case Name: Save ##
 
 **Date:** 4/6/2021
-## Summary
+### Summary
 The actor wants to save their progress on a task
-## Actors
+### Actors
 A person or bot
-## Preconditions 
+### Preconditions 
 * The task must have unsaved progress or changes
-## Triggers
+### Triggers
 * Actor selects a 'Save' button or icon
-## Primary Sequence
+### Primary Sequence
 1. System saves the changes when user presses the respective button.
-## Primary Postconditions
+### Primary Postconditions
 System must have saved any unsaved progress made on a task.
 
 
-**Use Case Name:** Save as
+## Use Case Name: Save as ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 The actor wants to save a task under a new name.
-## Actors
+### Actors
 A person or bot
-## Preconditions 
+### Preconditions 
 * The task must have unsaved progress or changes
-## Triggers
+### Triggers
 * Actor selects a 'Save as' button or icon
-## Primary Sequence
+### Primary Sequence
 1. System shows user a text field in which they can edit what name to save the task under.
 2. User types their desired name in text field and confirms their choice to the system.
 3. System renames the task accordingly and saves unsaved progress ('Save' use case)
-## Primary Postconditions
+### Primary Postconditions
 System must have saved any unsaved progress made on a task, under the new task name.
 
-## Alternate Sequences
+### Alternate Sequences
 2. The name entered is already being used by another task.
 
    a. The system asks if the user wants to overwrite the existing file.
@@ -198,37 +198,37 @@ System must have saved any unsaved progress made on a task, under the new task n
  
 
 
-### Alternate Trigger
+#### Alternate Trigger
 The name the user attempts to save under is already being used.
 
-### Alternate Postconditions
+#### Alternate Postconditions
 System overrides existing file if the actor demands it, or does not if the actor does not wish to override.
 
 
 
 
-**Use Case Name:** Make a copy
+## Use Case Name: Make a copy ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 The actor wants to create a duplicate of a task
-## Actors
+### Actors
 A person or bot
-## Preconditions 
+### Preconditions 
 * The task must have unsaved progress or changes
 * User must be logged in
 * User must have the task open
-## Triggers
+### Triggers
 * Actor selects a 'Make a copy' button
-## Primary Sequence
+### Primary Sequence
 1. System creates a copy of the selected task under a name that indicates that it is a copy.
 
 
 
-## Primary Postconditions
+### Primary Postconditions
 A file whose contents are identical to the original must have been created in the same location.
 
-## Alternate Sequences
+### Alternate Sequences
 2. The name entered is already being used by another task.
 
    a. The system asks if the user wants to overwrite the existing file.
@@ -236,148 +236,148 @@ A file whose contents are identical to the original must have been created in th
    b. File is overwritten if the user confirms, otherwise does nothing.
 
 
-**Use Case Name:** Invite collaborators
+## Use Case Name: Invite collaborators ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 The actor wants to allow other users to work on a task.
-## Actors
+### Actors
 * The person or bot doing the inviting
 * The users being invited
-## Preconditions 
+### Preconditions 
 * The collaborators must not already be able to work on the file
-## Triggers
+### Triggers
 * Actor selects a button to invite users to the task
-## Primary Sequence
+### Primary Sequence
 1. System prompts user to tell it which users to invite, and does not show any users that are already collaborators.
 2. User adds any other users they want to have access to the task.
 3. System invites selected users and grants them the ability to work on the task.
 
-## Primary Postconditions
+### Primary Postconditions
 Invited users should be able to work on the task.
 
-**Use Case Name:** Remove collaborators
+## Use Case Name: Remove collaborators ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 The actor wants to remove a user from a task
-## Actors
+### Actors
 The person removing the user
-## Preconditions
+### Preconditions
 * The actor must be logged in
 * The actor must have an active task with other collaborators
-## Triggers
+### Triggers
 Actor selects a button to remove users from a task 
-## Primary Sequence
+### Primary Sequence
 1. System displays a list of currently collaborating users
 2. Actor selects the users they would like to remove
 3. System removes the users from the task, making them unable to work on it
 
-## Primary Postconditions
+### Primary Postconditions
 * The selected users cannot work on the task they were removed from
 
 
-**Use Case Name:** Comment
+## Use Case Name: Comment ##
 
 **Date:** 4/7/2021
 
-## Summary
+### Summary
 The actor wants to write a comment on a task
-## Actors
+### Actors
 The person writing the comment
-## Preconditions
+### Preconditions
 * The actor must be logged in
 * Actor should have task open
-## Triggers
+### Triggers
 The actor selects a 'Comment' button
-## Primary Sequence
+### Primary Sequence
 1. System opens a text field for the actor to write their comment in
 2. Actor types in text field
 3. After the actor selects a 'Post' button, the system shows the actor's comment beneath the task
 
-## Primary Postconditions
+### Primary Postconditions
 * The written comment should be visible to users viewing the task
 
-**Use Case Name:** Set priority
+## Use Case Name: Set priority ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 Actor wants to set priority for different tasks as a reminder of the task's relative importance. The priorites can be set from 1-5, 1 being the highest and 5 being the lowest.
-## Actors
+### Actors
 A person
-## Preconditions
+### Preconditions
 * The actor must be logged in
 * The actor must have a task open
-## Triggers
+### Triggers
 The actor selects a button that allows them to set the task's priority
-## Primary Sequence
+### Primary Sequence
 1. System opens a list of different priorities from 1-5
 2. Actor selects a priority from the list
 3. System prompts user to add an (optional) deadline ('Set deadline' use case)
-## Primary Postconditions
+### Primary Postconditions
 * The task is marked with the selected priority
 
 
-**Use Case Name:** Set deadline
+## Use Case Name: Set deadline ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 The actor wants to attribute a certain date to a task, so that they know when they should be finished with said task, or want to modify the deadline. The deadline merely serves as a reminder, and can be changed by the user(s).
-## Actors
+### Actors
 * The person or bot
-## Preconditions 
+### Preconditions 
 * The file must exist
-## Triggers
+### Triggers
 * Actor selects 'Set deadline' option
-## Primary Sequence
+### Primary Sequence
 1. System prompts user to enter a date/time. Generally, the system will default to the computer's set time, but if a deadline is already set, the system should default to that deadline's date.
 2. User confirms choice by hitting a confirm button.
 
 
 
-## Primary Postconditions
+### Primary Postconditions
 A date and/or time values should be highlighted as a deadline and attributed to the task.
 
 
-**Use Case Name:** Revert to previous version
+## Use Case Name: Revert to previous version ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 The actor wants to return the task to an earlier version, assuming the system keeps track of each time the task is saved.
-## Actors
+### Actors
 * The person or bot
-## Preconditions 
+### Preconditions 
 * User must be logged in
 * User must have the task open
-## Triggers
+### Triggers
 * Actor selects 'Restore older version' button 
-## Primary Sequence
+### Primary Sequence
 1. System shows user the task's history, which includes versions from each time the task was saved.
 2. User selects a version to view.
 3. System shows that version of the task, and gives an option to restore that version.
 4. User selects option to restore the old version of the task.
 5. System saves the file using the contents of the version selected ('Save' use case).
 
-## Primary Postconditions
+### Primary Postconditions
 The file is saved under the version selected by the user
 
 
-**Use Case Name:** Organize tasks
+## Use Case Name: Organize tasks ##
 
 **Date:** 4/7/2021
-## Summary
+### Summary
 The actor wants to organize their tasks by either priority or deadline
-## Actors
+### Actors
 A person
-## Preconditions
+### Preconditions
 * The actor must be logged in
 * The actor must have an active task 
-## Triggers
+### Triggers
 The actor selects a button that allows the actor to sort their tasks
-## Primary Sequence
+### Primary Sequence
 1. System shows a list of the parameters it can sort by(currently priority or deadline)
 2. Actor selects a parameter
-## Primary Postconditions
+### Primary Postconditions
 * The actor's tasks are shown in order of decending priority or deadline
 
 
