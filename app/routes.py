@@ -92,6 +92,8 @@ def newtask():
                 flash('Task already exists under that name')
         if not exists:
             new_task=Task(title=form.title.data,desc=form.desc.data)
+            db.session.add(new_task)
+            db.session.commit()
     return render_template('newtask.html', form=form)
 
 
