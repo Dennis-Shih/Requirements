@@ -8,7 +8,7 @@ from app.models import User
 @app.route('/')
 @app.route('/index.html')
 def index():
-    return "Home"
+    return render_template('home.html')
 
 #logs the user in when they type in a username and password
 @app.route('/login', methods=['GET', 'POST'])
@@ -39,6 +39,9 @@ def login():
             form.username.data))
     return render_template('login.html', form=form)
 
+@app.route("/logout")
+def logout():
+    flash('logout placeholder')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -75,7 +78,5 @@ def register():
     return render_template('register.html', form=form)
 
 
-@app.route("/logout")
-def logout():
-    flash('logout')
+
 
