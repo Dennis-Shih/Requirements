@@ -1,8 +1,8 @@
 from flask import render_template, redirect, flash
 from app import app
 from app import db
-from app.forms import LoginForm, RegisterForm
-from app.models import User
+from app.forms import LoginForm, RegisterForm, CreateTaskForm
+from app.models import User, Task
 
 
 @app.route('/')
@@ -14,7 +14,6 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form=LoginForm()
-
 
     if form.validate_on_submit():
         '''Check that the user exists (and that they have a correct password),
@@ -77,6 +76,22 @@ def register():
 
     return render_template('register.html', form=form)
 
+@app.route('/newtask', methods=['GET', 'POST'])
+def newtask():
+    form=CreateTaskForm()
 
+    if form.validate_on_submit():
+        '''Creates new task when title is filled out'''
+        exists = False
+        tasks =Task.query.all()
+
+        new_task = None
+        for t in tasks:
+            if t.title == form.title.data:
+                exists=True
+                flash('Task already exists under that name')
+        if not exists:
+            new_task=Task(title=form.title.data,desc=form.desc.data)
+    return render_template('newtask.html', form=form)
 
 
