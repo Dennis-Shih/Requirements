@@ -94,6 +94,12 @@ def newtask():
             new_task=Task(title=form.title.data,desc=form.desc.data)
             db.session.add(new_task)
             db.session.commit()
+            return redirect('/tasklist')
     return render_template('newtask.html', form=form)
 
+#lists all the existing tasks
+@app.route('/tasklist')
+def list():
+    list=Task.query.all()
+    return render_template('list.html', all_tasks=list)
 
