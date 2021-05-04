@@ -18,20 +18,18 @@ def login():
     if form.validate_on_submit():
         '''Check that the user exists (and that they have a correct password),
          show user error message if account doesnt exist'''
-        #flash('Login requested for user {}'.format(
-        #form.username.data, form.password.data))
 
         exists = False
 
         users =User.query.all()
         print(users)
-        new_user = None
+        the_user = None
         for u in users:
             print(u.name)
             #reminder to self: form.username.data is the string for name, not form.username
             if u.name == form.username.data:
                 exists=True
-                new_user=u
+                the_user=u
                 return redirect('/')
         if not exists:
             flash('User {} does not exist.'.format(
@@ -102,11 +100,10 @@ def newtask():
 @app.route('/task', methods=['GET', 'POST'])
 def task():
     form = TaskForm()
-       
     if 'Save' in request.form:
         db.session.add(form)
         db.session.commit()
-return render_template('task.html', form=form)
+    return render_template('task.html', form=form)
 
 #lists all the existing tasks
 @app.route('/tasklist')
