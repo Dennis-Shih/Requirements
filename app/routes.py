@@ -99,6 +99,15 @@ def newtask():
             return redirect('/tasklist')
     return render_template('newtask.html', form=form)
 
+@app.route('/task', methods=['GET', 'POST'])
+def task():
+    form = TaskForm()
+       
+    if 'Save' in request.form:
+        db.session.add(form)
+        db.session.commit()
+return render_template('task.html', form=form)
+
 #lists all the existing tasks
 @app.route('/tasklist')
 def list():
