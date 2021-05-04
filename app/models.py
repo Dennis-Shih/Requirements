@@ -15,6 +15,7 @@ class Task(db.Model):
     title=db.Column(db.String(70), unique=True, nullable=False)
     desc=db.Column(db.String(70), unique=False, nullable=True)
     ispriority=db.Column(db.Boolean, nullable=True)
+    collab = db.Column(db.String(70), unique=False, nullable=True)
     def __repr__(self):
         return f'<Task {self.title}>'
 
