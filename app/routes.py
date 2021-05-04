@@ -91,7 +91,9 @@ def newtask():
                 exists=True
                 flash('Task already exists under that name')
         if not exists:
-            new_task=Task(title=form.title.data,desc=form.desc.data)
+            priority=False
+            if form.ispriority(): priority=True
+            new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=priority)
             db.session.add(new_task)
             db.session.commit()
             return redirect('/tasklist')

@@ -18,4 +18,5 @@ class RegisterForm(FlaskForm):
 class CreateTaskForm(FlaskForm):
     title = StringField('Task name',validators=[DataRequired()])
     desc = StringField('Task Description')
+    ispriority=BooleanField('Set as Priority?')
     submit = SubmitField('Create task')

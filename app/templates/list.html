@@ -4,6 +4,10 @@
     <title>All Tasks</title>
     <h1>Tasks</h1>
         {% for t in all_tasks %}
-            <p>{{t}} </p>
+            {% if t.ispriority %}
+                <p><b>{{t}}</b></p>
+            {% else %}
+                <p>{{t}} </p>
+            {% endif %}
         {% endfor %}
 {% endblock %}
