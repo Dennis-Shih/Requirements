@@ -12,10 +12,12 @@ Allows setting different priorities on tasks
 
 
 ## Installation
-You can install this app by:
+You can install this app by cloning the github repo to your machine.
+
+**Github repository:** https://github.com/Dennis-Shih/Requirements
 
 ## How to use
-You can run this app by:
+You can run this app with the command 'python3 run.py'.
 
 **Registering an account:** After installing the app, you must register an account to continue.
 
