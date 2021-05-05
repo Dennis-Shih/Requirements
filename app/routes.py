@@ -4,7 +4,7 @@ from app import db
 from app.forms import LoginForm, RegisterForm, CreateTaskForm
 from app.models import User, Task
 
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from flask_login import LoginManager
 from flask_login import login_required
 
@@ -50,8 +50,10 @@ def login():
     return render_template('login.html', form=form)'''
 
 @app.route("/logout")
+@login_required
 def logout():
-    flash('logout placeholder')
+    logout_user()
+    return redirect('/')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
