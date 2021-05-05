@@ -4,6 +4,9 @@ from app import db
 from app.forms import LoginForm, RegisterForm, CreateTaskForm
 from app.models import User, Task
 
+from flask_login import current_user, login_user
+from flask_login import LoginManager
+from flask_login import login_required
 
 @app.route('/')
 @app.route('/index.html')
@@ -13,11 +16,21 @@ def index():
 #logs the user in when they type in a username and password
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form=LoginForm()
+    form = LoginForm()
+    if form.validate_on_submit():
+        the_user = User.query.filter_by(name=form.username.data).first()
+        if the_user is None or not the_user.check_password(form.password.data):
+            flash('Invalid username or password')
+            return redirect('/login')
+        #if login works
+        login_user(the_user)
+        return redirect('/')
+
+    return render_template('login.html', title='Login', form=form)
+
+    '''form=LoginForm()
 
     if form.validate_on_submit():
-        '''Check that the user exists (and that they have a correct password),
-         show user error message if account doesnt exist'''
 
         exists = False
 
@@ -34,7 +47,7 @@ def login():
         if not exists:
             flash('User {} does not exist.'.format(
             form.username.data))
-    return render_template('login.html', form=form)
+    return render_template('login.html', form=form)'''
 
 @app.route("/logout")
 def logout():
@@ -68,6 +81,7 @@ def register():
         if not exists:
             new_user=User(name=form.username.data,
             password=form.password.data)
+            new_user.set_password(form.password.data)
             db.session.add(new_user)
             db.session.commit()
             return redirect('/')

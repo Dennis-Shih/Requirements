@@ -2,9 +2,10 @@ import os
 
 from flask_sqlalchemy import SQLAlchemy
 
-
+from flask_login import LoginManager
 # include Flask class from file flask
 from flask import Flask
+
 
 # for the location of the current file, what is its directory
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -20,5 +21,8 @@ app.config.from_mapping(
 )
 
 db = SQLAlchemy(app)
+
+login = LoginManager(app)
+login.login_view=login
 
 from app import routes, models
