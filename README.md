@@ -1,4 +1,4 @@
-# TaskApp
+# TaskLab
 
 ## General info
 This app lets users work on tasks of various sizes in an efficient and organized manner.
