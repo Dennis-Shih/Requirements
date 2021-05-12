@@ -27,3 +27,9 @@ class TaskForm(FlaskForm):
     ispriority=BooleanField('Set as Priority?')
     save = SubmitField('Save task')
     collab = StringField('Collaborator(s)')
+
+#ONLY SHOW LOGIN BUTTON IF NOT LOGGED IN
+class HomeForm(FlaskForm):
+    #if not logged in, the 'view tasks' should redirect to login page
+    viewTasks = SubmitField('View tasks')
+    loginOrRegister = SubmitField('Login or Register')

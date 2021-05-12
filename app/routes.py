@@ -1,17 +1,25 @@
-from flask import render_template, redirect, flash
+from flask import render_template, redirect, flash, url_for, request
 from app import app
 from app import db
-from app.forms import LoginForm, RegisterForm, CreateTaskForm
+from app.forms import LoginForm, RegisterForm, CreateTaskForm, TaskForm
+from app.forms import HomeForm
 from app.models import User, Task
 
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from flask_login import LoginManager
 from flask_login import login_required
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index.html')
 def index():
-    return render_template('home.html')
+    form = HomeForm()
+    if form.validate_on_submit():
+        #need 2 buttons, one for login/register and one to 'view tasks'
+        if request.form.get('viewTasks', False):
+            return redirect('/tasklist')
+        else:
+            return redirect('/login')
+    return render_template('home.html', form=form)
 
 #logs the user in when they type in a username and password
 @app.route('/login', methods=['GET', 'POST'])
@@ -21,37 +29,18 @@ def login():
         the_user = User.query.filter_by(name=form.username.data).first()
         if the_user is None or not the_user.check_password(form.password.data):
             flash('Invalid username or password')
-            return redirect('/login')
+            return redirect(url_for('login'))
         #if login works
         login_user(the_user)
         return redirect('/')
 
     return render_template('login.html', title='Login', form=form)
 
-    '''form=LoginForm()
-
-    if form.validate_on_submit():
-
-        exists = False
-
-        users =User.query.all()
-        print(users)
-        the_user = None
-        for u in users:
-            print(u.name)
-            #reminder to self: form.username.data is the string for name, not form.username
-            if u.name == form.username.data:
-                exists=True
-                the_user=u
-                return redirect('/')
-        if not exists:
-            flash('User {} does not exist.'.format(
-            form.username.data))
-    return render_template('login.html', form=form)'''
-
 @app.route("/logout")
+@login_required
 def logout():
-    flash('logout placeholder')
+    logout_user()
+    return redirect('/')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -84,6 +73,7 @@ def register():
             new_user.set_password(form.password.data)
             db.session.add(new_user)
             db.session.commit()
+            login_user(new_user)
             return redirect('/')
 
     return render_template('register.html', form=form)

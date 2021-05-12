@@ -2,7 +2,20 @@
 
 {% block content %}
     <title>Home</title>
-    <h1>Home Page</h1>    
-    <p>       
-    </p>
+    <h1>Home Page</h1>
+    <form action="" method="post" novalidate>
+        {{form.hidden_tag()}}
+        <p><!--{{form.loginOrRegister()}}-->  
+        {% if current_user.is_authenticated %}
+            Welcome, you are logged in as {{ current_user.name }}!
+        {% else %}
+            
+            {{form.loginOrRegister()}}   
+            
+        {% endif %}
+        </p>
+        <p>
+        {{form.viewTasks()}}
+        </p>
+    </form>    
 {% endblock %}
