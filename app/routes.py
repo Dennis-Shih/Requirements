@@ -1,7 +1,7 @@
 from flask import render_template, redirect, flash, url_for, request
 from app import app
 from app import db
-from app.forms import LoginForm, RegisterForm, CreateTaskForm, TaskForm
+from app.forms import ListForm,LoginForm, RegisterForm, CreateTaskForm, TaskForm
 from app.forms import HomeForm
 from app.models import User, Task
 
@@ -107,11 +107,15 @@ def task():
     if 'Save' in request.form:
         db.session.add(form)
         db.session.commit()
+        return redirect('/tasklist')
     return render_template('task.html', form=form)
 
 #lists all the existing tasks
-@app.route('/tasklist')
+@app.route('/tasklist', methods=['GET','POST'])
 def list():
+    form =ListForm()
     list=Task.query.all()
-    return render_template('list.html', all_tasks=list)
+    if form.validate_on_submit():
+        return redirect('/newtask')
+    return render_template('list.html', all_tasks=list, form=form)
 

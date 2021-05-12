@@ -20,7 +20,6 @@ class CreateTaskForm(FlaskForm):
     desc = StringField('Task Description')
     ispriority=BooleanField('Set as Priority?')
     submit = SubmitField('Create task')
-    
 class TaskForm(FlaskForm):
     title = StringField('Task name',validators=[DataRequired()])
     desc = StringField('Task Description')
@@ -33,3 +32,6 @@ class HomeForm(FlaskForm):
     #if not logged in, the 'view tasks' should redirect to login page
     viewTasks = SubmitField('View tasks')
     loginOrRegister = SubmitField('Login or Register')
+
+class ListForm(FlaskForm):
+    createTask=SubmitField('New task')

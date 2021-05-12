@@ -2,6 +2,11 @@
 
 {% block content %}
     <title>All Tasks</title>
+    <form action="" method="post" novalidate>
+        {{form.hidden_tag()}}
+        <p>{{form.createTask()}} </p>
+    </form>
+
     <h1>Tasks</h1>
         {% for t in all_tasks %}
             {% if t.ispriority %}
