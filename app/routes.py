@@ -96,7 +96,7 @@ def newtask():
         if not exists:
             priority=False
             if form.ispriority():
-		 priority=True
+                priority=True
             new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=priority)
             db.session.add(new_task)
             db.session.commit()
