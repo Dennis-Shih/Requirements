@@ -31,7 +31,8 @@ class TaskForm(FlaskForm):
 class HomeForm(FlaskForm):
     #if not logged in, the 'view tasks' should redirect to login page
     viewTasks = SubmitField('View tasks')
-    loginOrRegister = SubmitField('Login or Register')
+    login = SubmitField('Login')
+    register = SubmitField('Register')
 
 class ListForm(FlaskForm):
     createTask=SubmitField('New task')

@@ -26,6 +26,6 @@ class Task(db.Model):
     def __repr__(self):
         return f'<Task {self.title}>'
 
-
-
-db.create_all()
+@login.user_loader
+def load_user(user_id):
+    return User.get(user_id)
