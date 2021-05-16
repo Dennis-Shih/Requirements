@@ -25,7 +25,11 @@ class Task(db.Model):
     collab = db.Column(db.String(70), unique=False, nullable=True)
     def __repr__(self):
         return f'<Task {self.title}>'
-
+'''
 @login.user_loader
-def load_user(user_id):
-    return User.get(user_id)
+def load_user(id):
+    return User.get(id)
+'''
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
