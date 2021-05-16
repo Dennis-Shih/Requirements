@@ -27,7 +27,5 @@ class Task(db.Model):
         return f'<Task {self.title}>'
 
 @login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-
-db.create_all()
+def load_user(user_id):
+    return User.get(user_id)

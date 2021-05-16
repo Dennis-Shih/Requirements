@@ -1,4 +1,4 @@
-from flask import render_template, redirect, flash, url_for, request
+from flask import render_template, redirect, flash, url_for, request, session
 from app import app
 from app import db
 from app.forms import ListForm,LoginForm, RegisterForm, CreateTaskForm, TaskForm
@@ -8,6 +8,7 @@ from app.models import User, Task
 from flask_login import current_user, login_user, logout_user
 from flask_login import LoginManager
 from flask_login import login_required
+app.secret_key = 'hb0/s?4v\_pxfTN7'
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index.html')
@@ -96,7 +97,8 @@ def newtask():
                 flash('Task already exists under that name')
         if not exists:
             priority=False
-            if form.ispriority(): priority=True
+            if form.ispriority():
+                priority=True
             new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=priority)
             db.session.add(new_task)
             db.session.commit()
