@@ -7,7 +7,7 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
 
     submit = SubmitField('Sign In')
-
+    register = SubmitField('Need an account?')
 class RegisterForm(FlaskForm):
     username = StringField('Set Username',validators=[DataRequired()])
     password = PasswordField('Set Password', validators=[DataRequired()])
@@ -20,6 +20,7 @@ class CreateTaskForm(FlaskForm):
     desc = StringField('Task Description')
     ispriority=BooleanField('Set as Priority?')
     submit = SubmitField('Create task')
+
 class TaskForm(FlaskForm):
     title = StringField('Task name',validators=[DataRequired()])
     desc = StringField('Task Description')

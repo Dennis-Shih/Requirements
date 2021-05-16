@@ -26,13 +26,17 @@ def index():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        the_user = User.query.filter_by(name=form.username.data).first()
-        if the_user is None or not the_user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-        #if login works
-        login_user(the_user)
-        return redirect('/')
+        if request.form.get('register', False):
+            return redirect('/register')
+
+        if request.form.get('submit'):
+            the_user = User.query.filter_by(name=form.username.data).first()
+            if the_user is None or not the_user.check_password(form.password.data):
+                flash('Invalid username or password')
+                return redirect(url_for('login'))
+            #if login works
+            login_user(the_user)
+            return redirect('/')
 
     return render_template('login.html', title='Login', form=form)
 
@@ -50,8 +54,6 @@ def register():
     '''this should create new user if name is available,
     then redirect to home page'''
     if form.validate_on_submit():
-        #flash('Register user {}','Password {}','Confirm password {}'.format(
-        #form.username.data, form.password.data, form.confirmpass.data))
         exists = False
 
         users =User.query.all()
