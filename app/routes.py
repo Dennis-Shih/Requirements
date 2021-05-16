@@ -20,8 +20,11 @@ def index():
             return redirect('/tasklist')
         elif request.form.get('login', False):
             return redirect('/login')
+        #Only appears if user is logged in
         elif request.form.get('logout', False):
             return redirect('/logout')
+        elif request.form.get('register', False):
+            return redirect(url_for('register'))
     return render_template('home.html', form=form)
 
 #logs the user in when they type in a username and password
@@ -30,19 +33,28 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         if request.form.get('register', False):
-            return redirect('/register')
-        elif request.form.get('login'):
+            return redirect(url_for('register'))
+        elif request.form.get('login', False):
+            '''This checks that the form textfields are not left blank instead 
+            of DataRequired, as DataRequired prevents the form from doing anything
+            until textfields are filled.'''
+            if not request.form.get('username'):
+                flash('That field is required.')
+                return redirect(url_for('login'))
+            #if field is filled, this checks user data with the username entered
             the_user = User.query.filter_by(name=form.username.data).first()
             if the_user is None or not the_user.check_password(form.password.data):
                 flash('Invalid username or password')
                 return redirect(url_for('login'))
-            #if login works
+            #if correct username and password, logs in
             login_user(the_user)
+            return redirect('/')
+        elif request.form.get('home', False):
             return redirect('/')
 
     return render_template('login.html', title='Login', form=form)
 
-@app.route("/logout")
+@app.route('/logout')
 @login_required
 def logout():
     logout_user()
@@ -51,13 +63,10 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form=RegisterForm()
-
-
     '''this should create new user if name is available,
     then redirect to home page'''
     if form.validate_on_submit():
         exists = False
-
         users =User.query.all()
         new_user = None
         print(users)
@@ -82,7 +91,9 @@ def register():
 
     return render_template('register.html', form=form)
 
+
 @app.route('/newtask', methods=['GET', 'POST'])
+@login_required
 def newtask():
     form=CreateTaskForm()
 

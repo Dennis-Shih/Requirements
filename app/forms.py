@@ -3,13 +3,14 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Integ
 from wtforms.validators import DataRequired
 
 class LoginForm(FlaskForm):
-    username = StringField('Username',validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    username = StringField('Username')
+    password = PasswordField('Password')
 
     login = SubmitField('Sign In')
     register = SubmitField('Need an account?')
+    home = SubmitField('Return to home')
 class RegisterForm(FlaskForm):
-    username = StringField('Set Username',validators=[DataRequired()])
+    username = StringField('Set Username')
     password = PasswordField('Set Password', validators=[DataRequired()])
     confirmpass = PasswordField('Confirm Password', validators=[DataRequired()])
 
