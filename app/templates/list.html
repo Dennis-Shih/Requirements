@@ -10,9 +10,9 @@
     <h1>Tasks</h1>
         {% for t in all_tasks %}
             {% if t.ispriority %}
-                <p><b>{{t}}</b></p>
+                <p><b>{{t}}</b>{{form.edit}}</p>
             {% else %}
-                <p>{{t}}</p>
+                <p>{{t}}{{form.edit}}</p>
             {% endif %}
         {% endfor %}
 {% endblock %}

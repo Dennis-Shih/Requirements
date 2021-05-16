@@ -18,8 +18,10 @@ def index():
         #need 2 buttons, one for login/register and one to 'view tasks'
         if request.form.get('viewTasks', False):
             return redirect('/tasklist')
-        else:
+        elif request.form.get('login', False):
             return redirect('/login')
+        elif request.form.get('logout', False):
+            return redirect('/logout')
     return render_template('home.html', form=form)
 
 #logs the user in when they type in a username and password
@@ -29,8 +31,7 @@ def login():
     if form.validate_on_submit():
         if request.form.get('register', False):
             return redirect('/register')
-
-        if request.form.get('submit'):
+        elif request.form.get('login'):
             the_user = User.query.filter_by(name=form.username.data).first()
             if the_user is None or not the_user.check_password(form.password.data):
                 flash('Invalid username or password')

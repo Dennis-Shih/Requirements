@@ -6,14 +6,14 @@ class LoginForm(FlaskForm):
     username = StringField('Username',validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
 
-    submit = SubmitField('Sign In')
+    login = SubmitField('Sign In')
     register = SubmitField('Need an account?')
 class RegisterForm(FlaskForm):
     username = StringField('Set Username',validators=[DataRequired()])
     password = PasswordField('Set Password', validators=[DataRequired()])
     confirmpass = PasswordField('Confirm Password', validators=[DataRequired()])
 
-    submit = SubmitField('Register')
+    register = SubmitField('Register')
 
 class CreateTaskForm(FlaskForm):
     title = StringField('Task name',validators=[DataRequired()])
@@ -34,6 +34,7 @@ class HomeForm(FlaskForm):
     viewTasks = SubmitField('View tasks')
     login = SubmitField('Login')
     register = SubmitField('Register')
-
+    logout = SubmitField('Logout')
 class ListForm(FlaskForm):
     createTask=SubmitField('New task')
+    edit=SubmitField('Edit')
