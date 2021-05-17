@@ -8,7 +8,7 @@ Allows collaboration with other users on tasks
 
 Changes can be easily reverted
 
-Allows setting different priorities on tasks
+Allows setting priorities on tasks
 
 
 ## Installation
@@ -33,9 +33,7 @@ Keep in mind you cannot have two tasks with the same name.
 
 To do this, press the 'Invite collaborators' button and enter the name(s) of the collaborators you wish to add.
 
-**Setting Priority:** To set the priority of a task, click on the 'Set Priority' button while working on a task. This will open a dropdown list of priorities.
-
-Select the priority you wish the current task to have. 1 represents tasks with the most priority, while 5 represents tasks with the least priority.
+**Setting Priority:** To set the priority of a task, click on the 'Set Priority' button while working on a task. The task will appear bold in the task list.
 
 **Logging in:** To log in, enter your username and password on the login screen.
 
