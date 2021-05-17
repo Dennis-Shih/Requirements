@@ -109,7 +109,7 @@ def newtask():
                 flash('Task already exists under that name')
         if not exists:
             priority=False
-            if form.ispriority():
+            if not form.ispriority():
                 priority=True
                 flash("priority")
             new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=priority)

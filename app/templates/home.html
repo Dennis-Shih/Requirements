@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <title>Home</title>=
-    <h1 class="display-4 text-primary text-center">Home Page</h1>
+    <title>Home</title>
+    <h1 class="display-4 bg-light text-primary text-center">Home Page</h1>
     <form action="" method="post" novalidate>
         {{form.hidden_tag()}}
         <p>  
         {% if current_user.is_authenticated %}
-        <p class="text-dark text-center">
+        <p class="text-success text-center">
             Welcome, you are logged in as <b>{{ current_user.name }}!</b></p>
             <p class="display-4 text-light text-center">{{form.viewTasks()}}<p>
             <br>{{form.logout()}}
