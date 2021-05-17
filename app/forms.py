@@ -36,6 +36,12 @@ class HomeForm(FlaskForm):
     login = SubmitField('Login')
     register = SubmitField('Register')
     logout = SubmitField('Logout')
+    
+class createTask(FlaskForm):
+    createTask=SubmitField('New task')
 class ListForm(FlaskForm):
     createTask=SubmitField('New task')
     edit=SubmitField('Edit')
+
+
+    

@@ -2,19 +2,28 @@
 
 {% block content %}
     <title>All Tasks</title>
-    <form action="" method="post" novalidate>
-        {{form.hidden_tag()}}
-        
+    
     
 
     <h1 class="display-4 text-dark text-center">Tasks</h1>
-        <p>{{form.createTask()}} </p>
-        {% for t in all_tasks %}
-            {% if t.ispriority %}
-                <p><b>{{t.title}}</b>{{form.edit}}</p>
-            {% else %}
-                <p>{{t.title}}{{form.edit}}</p>
-            {% endif %}
-        {% endfor %}
+    
+    <form action="" method="post" novalidate>
+        {{form.hidden_tag()}}
+        {{form.createTask()}}
     </form>
+    
+        
+        {% for t in all_tasks %}
+        <form action="{{url_for('task',id=t.id)}}" method="post" novalidate>
+            <p>	
+            {% if t.ispriority %}
+                <b>{{t.title}}</b>
+            {% else %}
+                {{t.title}}
+                <input class="button" type="submit" name="Edit" value="Edit">
+            {% endif %}
+            </p>
+        </form>
+        {% endfor %}
+        
 {% endblock %}

@@ -1,4 +1,5 @@
 from app import db
+from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import login
 from flask_login import UserMixin
@@ -8,6 +9,10 @@ class User(UserMixin, db.Model):
     id=db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String(70), unique=True, index=True, nullable=False)
     password=db.Column(db.String(300), nullable=False)
+    #Tasks owned by this user
+    tasks = db.relationship('Task', backref='author', lazy='dynamic')
+    
+    
     def set_password(self, password):
         self.password=generate_password_hash(password)
     def check_password(self, password):
@@ -22,7 +27,11 @@ class Task(db.Model):
     title=db.Column(db.String(70), unique=True, nullable=False)
     desc=db.Column(db.String(70), unique=False, nullable=True)
     ispriority=db.Column(db.Boolean, nullable=True)
+    
     collab = db.Column(db.String(70), unique=False, nullable=True)
+    
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     def __repr__(self):
         return f'<Task {self.title}>'
 '''
