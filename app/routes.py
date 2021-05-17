@@ -103,26 +103,29 @@ def newtask():
         tasks =Task.query.all()
 
         new_task = None
-        for t in tasks:
-            if t.title == form.title.data:
-                exists=True
-                flash('Task already exists under that name')
-        if not exists:
+        t=Task.query.filter_by(title=form.title.data).first()
+        if t is not None:
+            exists=True
+            flash('Task already exists under that name')
+            return redirect(url_for('newtask'))
+        '''if not exists:
             priority=False
-            if not form.ispriority():
+            flash (form.ispriority())
+            if form.ispriority():
                 priority=True
-                flash("priority")
-            new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=priority)
-            db.session.add(new_task)
-            db.session.commit()
-            return redirect('/tasklist')
+                flash("priority")'''
+        new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=form.ispriority.data)
+        flash(form.ispriority.data)
+        db.session.add(new_task)
+        db.session.commit()
+        return redirect(url_for('list'))
     return render_template('newtask.html', form=form)
 
 @app.route('/task/<int:id>', methods=['GET', 'POST'])
 def task(id):
  
     task=Task.query.filter_by(id=id).first()
-    form = TaskForm(title=task.title)
+    form = TaskForm(title=task.title.data, desc=form.desc.data, ispriority=form.priority.data)
     if 'Save' in request.form:
         db.session.add(form)
         db.session.commit()
