@@ -4,15 +4,17 @@
     <title>All Tasks</title>
     <form action="" method="post" novalidate>
         {{form.hidden_tag()}}
-        <p>{{form.createTask()}} </p>
-    </form>
+        
+    
 
-    <h1>Tasks</h1>
+    <h1 class="display-4 text-dark text-center">Tasks</h1>
+        <p>{{form.createTask()}} </p>
         {% for t in all_tasks %}
             {% if t.ispriority %}
-                <p><b>{{t}}</b>{{form.edit}}</p>
+                <p><b>{{t.title}}</b>{{form.edit}}</p>
             {% else %}
-                <p>{{t}}{{form.edit}}</p>
+                <p>{{t.title}}{{form.edit}}</p>
             {% endif %}
         {% endfor %}
+    </form>
 {% endblock %}

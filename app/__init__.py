@@ -20,15 +20,16 @@ app.config.from_mapping(
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 )
 
-db = SQLAlchemy()
-db.init_app(app)
+db = SQLAlchemy(app)
+#db.init_app(app)
 
-login = LoginManager()
-login.init_app(app)
+login = LoginManager(app)
+#login.init_app(app)
 login.login_view=login
 
 from app import routes, models
-
-if __name__ == '__main__':
+db.create_all()
+'''if __name__ == '__main__':
     db.create_all()
     app.run(host="0.0.0.0", port=port)
+'''

@@ -111,6 +111,7 @@ def newtask():
             priority=False
             if form.ispriority():
                 priority=True
+                flash("priority")
             new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=priority)
             db.session.add(new_task)
             db.session.commit()
@@ -123,7 +124,7 @@ def task():
     if 'Save' in request.form:
         db.session.add(form)
         db.session.commit()
-        return redirect('/tasklist')
+        return redirect(url_for('list'))
     return render_template('task.html', form=form)
 
 #lists all the existing tasks
@@ -132,6 +133,9 @@ def list():
     form =ListForm()
     list=Task.query.all()
     if form.validate_on_submit():
-        return redirect('/newtask')
+        if request.form.get('createTask'):
+            return redirect(url_for('newtask'))
+        elif request.form.get('edit'): 
+            return redirect(url_for('task'))
     return render_template('list.html', all_tasks=list, form=form)
 
