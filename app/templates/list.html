@@ -17,7 +17,7 @@
         <form action="{{url_for('task',id=t.id)}}" method="post" novalidate>
             <p>	
             {% if t.ispriority %}
-                <b>{{t.title}}</b>
+                <b>{{t.title}} (Priority)</b>
             {% else %}
                 {{t.title}}
             {% endif %}

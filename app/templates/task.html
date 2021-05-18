@@ -17,6 +17,8 @@
             {{form.ispriority()}}<br>{{form.ispriority.label}}
         </p>
       <p> Collaborator <input type= "text" name = "collaborator"/></p>
-      <p> <input type = "submit" name = "Save"/></p>
+      
+      <p> <input type = "submit" name = "Save" value= "Save Task"/></p>
+      <p> {{form.deleteTask()}}</p>
     </form>
 {% endblock %}

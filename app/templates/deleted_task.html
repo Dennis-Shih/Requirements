@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <title>Home</title>
+    <h1 class="display-4 bg-warning text-dark text-center">
+    Task {{deletedtask.title}} has been deleted.
+    <form action="{{url_for('list')}}" method="post" novalidate>
+    	<p> <input type = "submit" name = "Return to Tasks" value= "Return to Tasks"/></p>
+    </form>
+    </h1>
+      
+{% endblock %}

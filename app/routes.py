@@ -17,12 +17,12 @@ def index():
     if form.validate_on_submit():
         #need 2 buttons, one for login/register and one to 'view tasks'
         if request.form.get('viewTasks', False):
-            return redirect('/tasklist')
+            return redirect(url_for('list'))
         elif request.form.get('login', False):
-            return redirect('/login')
+            return redirect(url_for('login'))
         #Only appears if user is logged in
         elif request.form.get('logout', False):
-            return redirect('/logout')
+            return redirect(url_for('logout'))
         elif request.form.get('register', False):
             return redirect(url_for('register'))
     return render_template('home.html', form=form)
@@ -108,12 +108,6 @@ def newtask():
             exists=True
             flash('Task already exists under that name')
             return redirect(url_for('newtask'))
-        '''if not exists:
-            priority=False
-            flash (form.ispriority())
-            if form.ispriority():
-                priority=True
-                flash("priority")'''
         new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=form.ispriority.data)
         flash(form.ispriority.data)
         db.session.add(new_task)
@@ -123,14 +117,29 @@ def newtask():
 
 @app.route('/task/<int:id>', methods=['GET', 'POST'])
 def task(id):
- 
     task=Task.query.filter_by(id=id).first()
     form = TaskForm(title=task.title, desc=task.desc, ispriority=task.ispriority)
     if 'Save' in request.form:
-        db.session.add(form)
+        if (form.title.data == ''):
+            flash("Name cannot be empty!")
+            return redirect(url_for('task', id=id))
+        task.title=form.title.data
+        task.desc=form.desc.data
+        task.ispriority=form.ispriority.data
+        db.session.add(task)
         db.session.commit()
         return redirect(url_for('list'))
+    if request.form.get('deleteTask'):
+        db.session.delete(task)
+        db.session.commit()
+        return redirect(url_for('deleteTask',id=id))
+    	
     return render_template('task.html', form=form)
+
+@app.route('/deleteTask/<int:id>')
+def deleteTask(id):
+    
+    return render_template('deleted_task.html', deletedtask=task)
 
 #lists all the existing tasks
 @app.route('/tasklist', methods=['GET','POST'])
