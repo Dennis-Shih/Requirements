@@ -3,8 +3,14 @@
 {% block content %}
     <title>Home</title>
     <h1>Home Page</h1>
-        
-        <p>       
+    <form action="" method="post" novalidate>
+        {{form.hidden_tag()}}
+                
+        <p>
+        {{form.login()}}
+        {{form.register()}}       
+        {{form.newtask()}}
+        {{form.tasklist()}}
         </p>
     </form>
 {% endblock %}

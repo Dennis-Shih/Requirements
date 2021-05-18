@@ -3,7 +3,16 @@
 {% block content %}
     <title>All Tasks</title>
     <h1>Tasks</h1>
-        {% for t in all_tasks %}
+    <form action="{{url_for('newtask')}}" method="post" novalidate>
+
+    <input class="button" type="submit" name="New Task" value="New Task">
+    </form>
+    <form action="{{('/')}}" method="post" novalidate>
+
+    <input class="button" type="submit" name="gohome" value="Return Home">
+    </form>
+    {% for t in all_tasks %}
             <p>{{t}} </p>
         {% endfor %}
+    
 {% endblock %}

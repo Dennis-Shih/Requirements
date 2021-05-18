@@ -1,14 +1,24 @@
-from flask import render_template, redirect, flash
+from flask import render_template, redirect, flash, request, url_for
 from app import app
 from app import db
-from app.forms import LoginForm, RegisterForm, CreateTaskForm
+from app.forms import LoginForm, RegisterForm, CreateTaskForm, HomeForm
 from app.models import User, Task
+from flask_login import LoginManager
 
-
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 @app.route('/index.html')
 def index():
-    return render_template('home.html')
+    form=HomeForm()
+    if form.validate_on_submit():
+        if request.form.get('login'):
+            return redirect(url_for('login'))
+        if request.form.get('register'):
+            return redirect(url_for('register'))
+        if request.form.get('newtask'):
+            return redirect(url_for('newtask'))
+        if request.form.get('tasklist'):
+            return redirect(url_for('list'))
+    return render_template('home.html', form=form)
 
 #logs the user in when they type in a username and password
 @app.route('/login', methods=['GET', 'POST'])
