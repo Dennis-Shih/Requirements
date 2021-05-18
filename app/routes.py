@@ -3,7 +3,7 @@ from app import app
 from app import db
 from app.forms import ListForm,LoginForm, RegisterForm, CreateTaskForm, TaskForm,createTask
 from app.forms import HomeForm
-from app.models import User, Task
+from app.models import User, Task, Collab
 
 from flask_login import current_user, login_user, logout_user
 from flask_login import LoginManager
@@ -100,7 +100,7 @@ def newtask():
     if form.validate_on_submit():
         '''Creates new task when title is filled out'''
         exists = False
-        tasks =Task.query.all()
+        
 
         new_task = None
         t=Task.query.filter_by(title=form.title.data).first()
@@ -119,16 +119,42 @@ def newtask():
 def task(id):
     task=Task.query.filter_by(id=id).first()
     form = TaskForm(title=task.title, desc=task.desc, ispriority=task.ispriority)
+    
     if 'Save' in request.form:
         if (form.title.data == ''):
             flash("Name cannot be empty!")
             return redirect(url_for('task', id=id))
+        #maybe stick function here with these param assignments
         task.title=form.title.data
         task.desc=form.desc.data
         task.ispriority=form.ispriority.data
+        
+       
+        if form.collab.data != '':
+            u=User.query.filter_by(username=form.collab.data).first()
+            #if collaborator is not an existing user
+            if u is None:
+            	flash('Cannot find user of that name')
+            	return redirect(url_for('task', id=id))
+            
+            #if collaborator is not already collaborator 
+            c=Collab.query.filter_by(name=form.collab.data).first()
+            if c is None:
+            	new_collab=Collab(name=form.collab.data)
+            	db.session.add(new_collab)
+            	
         db.session.add(task)
         db.session.commit()
         return redirect(url_for('list'))
+        
+    if request.form.get('makeCopy'):
+    	copy=Task(title=form.title.data, desc=task.desc, ispriority=task.ispriority)
+    	copy.title='Copy of ' +form.title.data
+    	db.session.add(copy)
+    	db.session.commit()
+    	flash('Successfully copied')
+    	return redirect(url_for('list'))
+    	
     if request.form.get('deleteTask'):
         db.session.delete(task)
         db.session.commit()

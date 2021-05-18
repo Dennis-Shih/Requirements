@@ -28,6 +28,7 @@ class TaskForm(FlaskForm):
     ispriority=BooleanField('Set as Priority?')
     save = SubmitField('Save task')
     collab = StringField('Collaborator(s)')
+    makeCopy = SubmitField('Make a copy')
     deleteTask=SubmitField('Delete task (CANNOT BE UNDONE)')
     
 

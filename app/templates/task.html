@@ -2,7 +2,7 @@
 
 {% block content %}
     <title>Edit Task</title>
-    <h1>Edit Task</h1>
+    <h1 class="display-4 bg-info text-secondary text-center">Edit Task</h1>
     <form action="" method="post" novalidate>
         {{form.hidden_tag()}}
         <p>
@@ -11,14 +11,20 @@
         </p>
         <p>
             {{form.desc.label}}<br>
-            {{form.desc(value="{{desc}}")}}
+            {{form.desc(value=form.desc.data)}}
         </p>
         <p>
             {{form.ispriority()}}<br>{{form.ispriority.label}}
         </p>
-      <p> Collaborator <input type= "text" name = "collaborator"/></p>
-      
-      <p> <input type = "submit" name = "Save" value= "Save Task"/></p>
-      <p> {{form.deleteTask()}}</p>
+    	Collaborator <input type= "text" name = "collaborator"/>
+     	{{form.makeCopy()}}
+     	<input type = "submit" name = "Save" value= "Save Task"/>
+     	<p class="display-8 bg-light text-primary text-right">{{form.deleteTask()}}
+    	</p>
+    	<p>
+    	{% for c in collabList %}
+    	     {{c}}
+    	{% endfor %}
+    	</p>
     </form>
 {% endblock %}

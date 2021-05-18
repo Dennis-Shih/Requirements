@@ -5,7 +5,7 @@
     
     
 
-    <h1 class="display-4 text-dark text-center">Tasks</h1>
+    <h1 class="display-4 bg-info text-dark text-center">Tasks</h1>
     
     <form action="" method="post" novalidate>
         {{form.hidden_tag()}}
@@ -21,6 +21,7 @@
             {% else %}
                 {{t.title}}
             {% endif %}
+            
             <input class="button" type="submit" name="Edit" value="Edit">
             </p>
         </form>
