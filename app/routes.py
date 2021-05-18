@@ -125,7 +125,7 @@ def newtask():
 def task(id):
  
     task=Task.query.filter_by(id=id).first()
-    form = TaskForm(title=task.title.data, desc=form.desc.data, ispriority=form.priority.data)
+    form = TaskForm(title=task.title, desc=task.desc, ispriority=task.ispriority)
     if 'Save' in request.form:
         db.session.add(form)
         db.session.commit()
