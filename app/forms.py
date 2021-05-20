@@ -20,14 +20,19 @@ class CreateTaskForm(FlaskForm):
     title = StringField('Task name',validators=[DataRequired()])
     desc = StringField('Task Description')
     ispriority=BooleanField('Set as Priority?')
+    deadline = StringField('Deadline (Format: yyyy-mm-dd)')
     submit = SubmitField('Create task')
+    
 
 class TaskForm(FlaskForm):
     title = StringField('Task name', validators=[DataRequired()])
     desc = StringField('Task Description')
     ispriority=BooleanField('Set as Priority?')
     save = SubmitField('Save task')
-    collab = StringField('Collaborator(s)')
+    collab = StringField('Add Collaborator(s)')
+    
+    deadline = StringField('Deadline (Format: yyyy-mm-dd)')
+    
     makeCopy = SubmitField('Make a copy')
     deleteTask=SubmitField('Delete task (CANNOT BE UNDONE)')
     

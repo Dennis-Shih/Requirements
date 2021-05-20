@@ -7,17 +7,19 @@
         {{form.hidden_tag()}}
         <p>
             {{form.title.label}}<br>
-            {{form.title(value=form.title.data)}}
-        </p>
-        <p>
+            {{form.title(value=form.title.data)}}<br>
+        
             {{form.desc.label}}<br>
-            {{form.desc(value=form.desc.data)}}
-        </p>
-        <p>
-            {{form.ispriority()}}<br>{{form.ispriority.label}}
-        </p>
-    	Collaborator <input type= "text" name = "collaborator"/>
-     	{{form.makeCopy()}}
+            {{form.desc(value=form.desc.data)}}<br>
+        </p><p>
+            {{form.ispriority()}}<br>{{form.ispriority.label}}<br>
+        
+        {{form.collab.label}}<br>
+    	{{form.collab()}}<br>
+    	{{form.deadline.label}}<br>
+    	{{form.deadline()}}<br>{{form.makeCopy.label}}<br>
+     	{{form.makeCopy()}}<br>
+     	</p>
      	<input type = "submit" name = "Save" value= "Save Task"/>
      	<p class="display-8 bg-light text-primary text-right">{{form.deleteTask()}}
     	</p>

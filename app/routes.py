@@ -4,7 +4,7 @@ from app import db
 from app.forms import ListForm,LoginForm, RegisterForm, CreateTaskForm, TaskForm,createTask
 from app.forms import HomeForm
 from app.models import User, Task, Collab
-
+from datetime import datetime, date
 from flask_login import current_user, login_user, logout_user
 from flask_login import LoginManager
 from flask_login import login_required
@@ -35,7 +35,7 @@ def login():
         if request.form.get('register', False):
             return redirect(url_for('register'))
         elif request.form.get('login', False):
-            '''This checks that the form textfields are not left blank instead 
+            '''This checks that the form textfields are not left blank instead
             of DataRequired, as DataRequired prevents the form from doing anything
             until textfields are filled.'''
             if not request.form.get('username'):
@@ -100,26 +100,39 @@ def newtask():
     if form.validate_on_submit():
         '''Creates new task when title is filled out'''
         exists = False
-        
-
         new_task = None
         t=Task.query.filter_by(title=form.title.data).first()
         if t is not None:
             exists=True
             flash('Task already exists under that name')
             return redirect(url_for('newtask'))
-        new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=form.ispriority.data)
+        #convert string to datetime
+        try:
+            format = "%Y/%m/%d"
+            deadlineToDate = datetime.now()
+            if form.deadline.data:
+                deadlineToDate = datetime.strptime(form.deadline.data, format)
+
+            new_task=Task(title=form.title.data,desc=form.desc.data,ispriority=form.ispriority.data, deadline=deadlineToDate)
+
+        except:
+            print("Incorrect format. Please enter deadline in yyyy/mm/dd format")
+
+
         flash(form.ispriority.data)
+
         db.session.add(new_task)
         db.session.commit()
+
         return redirect(url_for('list'))
+
     return render_template('newtask.html', form=form)
 
 @app.route('/task/<int:id>', methods=['GET', 'POST'])
 def task(id):
     task=Task.query.filter_by(id=id).first()
-    form = TaskForm(title=task.title, desc=task.desc, ispriority=task.ispriority)
-    
+    form = TaskForm(title=task.title, desc=task.desc, ispriority=task.ispriority, deadline=task.deadline)
+
     if 'Save' in request.form:
         if (form.title.data == ''):
             flash("Name cannot be empty!")
@@ -128,25 +141,32 @@ def task(id):
         task.title=form.title.data
         task.desc=form.desc.data
         task.ispriority=form.ispriority.data
+        format = "%Y-%m-%d"
+        deadlineToDate = datetime.now()
+        if form.deadline.data:
+            deadlineToDate = datetime.strptime(form.deadline.data, format)
+            task.deadline=deadlineToDate
         
-       
+
         if form.collab.data != '':
             u=User.query.filter_by(username=form.collab.data).first()
             #if collaborator is not an existing user
             if u is None:
             	flash('Cannot find user of that name')
             	return redirect(url_for('task', id=id))
-            
-            #if collaborator is not already collaborator 
+
+            #if collaborator is not already collaborator
             c=Collab.query.filter_by(name=form.collab.data).first()
             if c is None:
             	new_collab=Collab(name=form.collab.data)
             	db.session.add(new_collab)
             	
+        
+
         db.session.add(task)
         db.session.commit()
         return redirect(url_for('list'))
-        
+
     if request.form.get('makeCopy'):
     	copy=Task(title=form.title.data, desc=task.desc, ispriority=task.ispriority)
     	copy.title='Copy of ' +form.title.data

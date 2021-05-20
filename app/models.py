@@ -1,5 +1,5 @@
 from app import db
-from datetime import datetime
+from datetime import datetime, date
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import login
 from flask_login import UserMixin
@@ -26,13 +26,13 @@ class Task(db.Model):
     title=db.Column(db.String(70), unique=True, nullable=False)
     desc=db.Column(db.String(70), unique=False, nullable=True)
     ispriority=db.Column(db.Boolean, nullable=True)
-
+    
     collab = db.Column(db.String(70), unique=True, nullable=True)
     collabList=db.relationship('Collab', backref='author', lazy='dynamic')
-   
-
-
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    deadline=db.Column(db.Date, index=True, default=datetime.now())
+
+    
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     def __repr__(self):
